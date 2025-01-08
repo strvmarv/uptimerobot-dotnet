@@ -10,7 +10,7 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
 		<PackageId>UptimeRobotDotnet</PackageId>
-		<PackageVersion>1.0.1</PackageVersion>
+		<PackageVersion>1.0.2</PackageVersion>
 		<Authors>strvmarv</Authors>
 		<Description>A simple UptimeRobot.com API client for .NET</Description>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
