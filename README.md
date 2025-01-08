@@ -10,7 +10,7 @@ API Documentation: https://uptimerobot.com/api/
 # Notes
 
 - This client is a simple wrapper around the UptimeRobot API. It does not implement all the API endpoints.
-- The client uses the System.Text.Json namespace to serialize and deserialize JSON data.
+- The client uses the Newtonsoft.Json library to serialize and deserialize JSON data.
 - The client is asynchronous and uses the HttpClient class to make HTTP requests.
 - The HttpClient is implemented per Micrsoft recommendations.  In this case, a Singleton that is reused.
 - You may provide your own HttpClient instance if you want to manage the lifecycle of the HttpClient.
@@ -22,16 +22,15 @@ API Documentation: https://uptimerobot.com/api/
 ---------|------------
 | Alert Contacts | :x: |
 | Maintenance Windows | :x: |
-| Monitors | :white_check_mark: (partial) |
+| Monitors | :white_check_mark: |
 | Status Pages | :x: |
 
 # Caveats
 
-- The UTR API limits max results to 50.  This client does not handle pagination.  You will need to manage this yourself.
+- The UTR API limits max results to 50.  This client does not handle pagination.  You will need to manage this yourself using Offset.
 - The UTR API implementation only supports POST requests (99.9%), so the client API surface may not be ideal.
 - The UTR API requires the API Key to be passed in each POST body, so the client API surface may not be ideal.
 - The client will automatically inject the API Key into the payload from the active client, but you can set it manually as well.
-- The UTR API Delete Monitor action does not currently work.  It's been reported to UTR.
 
 # Usage
 
@@ -61,8 +60,8 @@ Example: Create a monitor for https://your-url-here.com
 var client = UptimeRobotClientFactory.Create("YOUR-API-KEY-HERE");
 var parameters = new MonitorParameters
 {
-	FriendlyName = "Your Monitor Name",  // Required
-	Type = 1, // Required
+    FriendlyName = "Your Monitor Name",  // Required
+    Type = 1, // Required
     Url = "https://your-url-here.com", // Required
 };
 var create = await client.MonitorCreate(parameters);
@@ -77,7 +76,7 @@ Example: Update the monitor interval to 300 seconds
 var client = UptimeRobotClientFactory.Create("YOUR-API-KEY-HERE");
 var updateParameters = new MonitorParameters
 {
-	Id = "EXISTING-MONITOR-ID", // Required
+    Id = "EXISTING-MONITOR-ID", // Required
     Interval = 300
 };
 var update = await client.MonitorUpdate(updateParameters);
@@ -89,7 +88,7 @@ https://uptimerobot.com/api/#deleteMonitorWrap
 ```csharp
 var deleteParameters = new MonitorDeleteParameters
 {
-	Id = "EXISTING-MONITOR-ID" // Required
+    Id = "EXISTING-MONITOR-ID" // Required
 };
 var client = UptimeRobotClientFactory.Create("YOUR-API-KEY-HERE");
 var delete = await client.MonitorDelete(deleteParameters);
