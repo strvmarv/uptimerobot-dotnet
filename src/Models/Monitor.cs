@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace UptimeRobotDotnet.Models
 {
@@ -34,54 +34,54 @@ namespace UptimeRobotDotnet.Models
             Disable_Domain_Expire_Notifications = createParameters.Disable_Domain_Expire_Notifications;
         }
 
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public int Id { get; set; }
-        [JsonPropertyName("friendly_name")]
+        [JsonProperty("friendly_name")]
         public string Friendly_Name { get; set; }
-        [JsonPropertyName("url")]
+        [JsonProperty("url")]
         public string Url { get; set; }
 
-        [JsonPropertyName("sub_type")]
+        [JsonProperty("sub_type")]
         public string Sub_Type { get; set; }
-        [JsonPropertyName("port")]
+        [JsonProperty("port")]
         public string Port { get; set; }
-        [JsonPropertyName("keyword_type")]
+        [JsonProperty("keyword_type")]
         public int? Keyword_Type { get; set; }
-        [JsonPropertyName("keyword_case_type")]
+        [JsonProperty("keyword_case_type")]
         public int? Keyword_Case_Type { get; set; }
-        [JsonPropertyName("keyword_value")]
+        [JsonProperty("keyword_value")]
         public string Keyword_Value { get; set; }
-        [JsonPropertyName("interval")]
+        [JsonProperty("interval")]
         public int? Interval { get; set; }
-        [JsonPropertyName("timeout")]
+        [JsonProperty("timeout")]
         public int? Timeout { get; set; }
-        [JsonPropertyName("status")]
+        [JsonProperty("status")]
         public int? Status { get; set; }
-        [JsonPropertyName("http_username")]
+        [JsonProperty("http_username")]
         public string Http_Username { get; set; }
-        [JsonPropertyName("http_password")]
+        [JsonProperty("http_password")]
         public string Http_Password { get; set; }
-        [JsonPropertyName("http_auth_type")]
+        [JsonProperty("http_auth_type")]
         public string Http_Auth_Type { get; set; }
-        [JsonPropertyName("http_method")]
+        [JsonProperty("http_method")]
         public string Http_Method { get; set; }
-        [JsonPropertyName("post_type")]
+        [JsonProperty("post_type")]
         public string Post_Type { get; set; }
-        [JsonPropertyName("post_value")]
+        [JsonProperty("post_value")]
         public string Post_Value { get; set; }
-        [JsonPropertyName("post_content_type")]
+        [JsonProperty("post_content_type")]
         public string Post_Content_Type { get; set; }
-        [JsonPropertyName("alert_contacts")]
+        [JsonProperty("alert_contacts")]
         public List<string> Alert_Contacts { get; set; }
-        [JsonPropertyName("mwindows")]
+        [JsonProperty("mwindows")]
         public List<string> Maintenance_Windows { get; set; }
-        [JsonPropertyName("custom_http_headers")]
+        [JsonProperty("custom_http_headers")]
         public Dictionary<string, string> Custom_Http_Headers { get; set; }
-        [JsonPropertyName("custom_http_statuses")]
+        [JsonProperty("custom_http_statuses")]
         public string Custom_Http_Statuses { get; set; }
-        [JsonPropertyName("ignore_ssl_errors")]
+        [JsonProperty("ignore_ssl_errors")]
         public bool? Ignore_Ssl_Errors { get; set; }
-        [JsonPropertyName("disable_domain_expire_notifications")]
+        [JsonProperty("disable_domain_expire_notifications")]
         public bool? Disable_Domain_Expire_Notifications { get; set; }
     }
 
@@ -95,64 +95,64 @@ namespace UptimeRobotDotnet.Models
         /// <summary>
         /// Friendly name of the monitor (REQUIRED)
         /// </summary>
-        [JsonPropertyName("friendly_name")]
+        [JsonProperty("friendly_name")]
         public string Friendly_Name { get; set; }
         /// <summary>
         /// URL to monitor (REQUIRED)
         /// </summary>
-        [JsonPropertyName("url")]
+        [JsonProperty("url")]
         public string Url { get; set; }
         /// <summary>
         /// Type of monitor (REQUIRED)
         /// </summary>
-        [JsonPropertyName("type")]
+        [JsonProperty("type")]
         public int Type { get; set; }
 
-        [JsonPropertyName("sub_type")]
+        [JsonProperty("sub_type")]
         public string Sub_Type { get; set; }
-        [JsonPropertyName("port")]
+        [JsonProperty("port")]
         public string Port { get; set; }
-        [JsonPropertyName("keyword_type")]
+        [JsonProperty("keyword_type")]
         public int? Keyword_Type { get; set; }
-        [JsonPropertyName("keyword_case_type")]
+        [JsonProperty("keyword_case_type")]
         public int? Keyword_Case_Type { get; set; }
-        [JsonPropertyName("keyword_value")]
+        [JsonProperty("keyword_value")]
         public string Keyword_Value { get; set; }
-        [JsonPropertyName("interval")]
+        [JsonProperty("interval")]
         public int? Interval { get; set; }
-        [JsonPropertyName("timeout")]
+        [JsonProperty("timeout")]
         public int? Timeout { get; set; }
-        [JsonPropertyName("status")]
+        [JsonProperty("status")]
         public int? Status { get; set; }
-        [JsonPropertyName("http_username")]
+        [JsonProperty("http_username")]
         public string Http_Username { get; set; }
-        [JsonPropertyName("http_password")]
+        [JsonProperty("http_password")]
         public string Http_Password { get; set; }
-        [JsonPropertyName("http_auth_type")]
+        [JsonProperty("http_auth_type")]
         public string Http_Auth_Type { get; set; }
-        [JsonPropertyName("http_method")]
+        [JsonProperty("http_method")]
         public string Http_Method { get; set; }
-        [JsonPropertyName("post_type")]
+        [JsonProperty("post_type")]
         public string Post_Type { get; set; }
-        [JsonPropertyName("post_value")]
+        [JsonProperty("post_value")]
         public string Post_Value { get; set; }
-        [JsonPropertyName("post_content_type")]
+        [JsonProperty("post_content_type")]
         public string Post_Content_Type { get; set; }
-        [JsonPropertyName("alert_contacts")]
+        [JsonProperty("alert_contacts")]
         public List<string> Alert_Contacts { get; set; }
-        [JsonPropertyName("custom_http_headers")]
+        [JsonProperty("custom_http_headers")]
         public Dictionary<string, string> Custom_Http_Headers { get; set; }
-        [JsonPropertyName("custom_http_statuses")]
+        [JsonProperty("custom_http_statuses")]
         public string Custom_Http_Statuses { get; set; }
-        [JsonPropertyName("ignore_ssl_errors")]
+        [JsonProperty("ignore_ssl_errors")]
         public bool? Ignore_Ssl_Errors { get; set; }
-        [JsonPropertyName("disable_domain_expire_notifications")]
+        [JsonProperty("disable_domain_expire_notifications")]
         public bool? Disable_Domain_Expire_Notifications { get; set; }
     }
 
     public class MonitorDeleteParameters : BaseModel
     {
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public int Id { get; set; }
     }
 
@@ -160,27 +160,36 @@ namespace UptimeRobotDotnet.Models
     {
         // Pagination properties
 
-        [JsonPropertyName("limit")]
-        public int? Limit { get; set; } = 50;
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
         
-        [JsonPropertyName("offset")]
+        [JsonProperty("offset")]
         public int? Offset { get; set; }
 
         // Filter properties
 
-        [JsonPropertyName("monitors")]
+        [JsonProperty("monitors")]
         public string Monitors { get; set; }
 
-        [JsonPropertyName("search")]
+        [JsonProperty("search")]
         public string Search { get; set; }
 
         // Optional data includes
 
-        //[JsonPropertyName("alert_contacts")] 
-        //public bool IncludeAlertContacts { get; set; } = true;
+        //[JsonProperty("alert_contacts")]
+        //public int Include_AlertContacts { get; set; }
 
-        //[JsonPropertyName("custom_http_headers")]
-        //public bool IncludeCustom_Http_Headers { get; set; } = true;
+        [JsonProperty("custom_http_headers")]
+        public int Include_Custom_Http_Headers { get; set; }
+
+        [JsonProperty("http_request_details")]
+        public bool Include_Http_Request_Details { get; set; }
+
+        //[JsonProperty("custom_http_statuses")]
+        //public int Include_Custom_Http_Statuses { get; set; }
+
+        //[JsonProperty("mwindows")]
+        //public int Include_Maintenance_Windows { get; set; }
     }
 
     public class MonitorUpdateParameters : Monitor

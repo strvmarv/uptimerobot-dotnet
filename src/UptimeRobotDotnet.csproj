@@ -7,10 +7,10 @@
 
 		<DebugType>embedded</DebugType>
 		<EmbedAllSources>True</EmbedAllSources>
-		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
 		<PackageId>UptimeRobotDotnet</PackageId>
-		<PackageVersion>1.0.0</PackageVersion>
+		<PackageVersion>1.0.1</PackageVersion>
 		<Authors>strvmarv</Authors>
 		<Description>A simple UptimeRobot.com API client for .NET</Description>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -19,16 +19,12 @@
 		<PackageTags>uptimerobot monitoring api</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>
-			initial release
+			fix post content type and tests
 		</PackageReleaseNotes>
 	</PropertyGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
-		<PackageReference Include="System.Text.Json" Version="6.0.11" />
-	</ItemGroup>
-
-	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
-		<PackageReference Include="System.Text.Json" Version="9.0.0" />
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>

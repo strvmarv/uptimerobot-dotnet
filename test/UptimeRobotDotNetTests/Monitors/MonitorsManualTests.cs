@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using NUnit.Framework;
+using Newtonsoft.Json;
 using UptimeRobotDotnet;
 using UptimeRobotDotnet.Models;
 
@@ -18,10 +17,9 @@ namespace UptimeRobotDotNetTests.Monitors
         private const string TestHeaderValue = "TestHeaderValue";
         private const string TestUrl = "https://github.com/strvmarv";
 
-        private static readonly JsonSerializerOptions JsonOptions = new JsonSerializerOptions()
+        private static readonly JsonSerializerSettings JsonOptions = new JsonSerializerSettings()
         {
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-            WriteIndented = true
+            Formatting = Formatting.Indented
         };
 
         private readonly ILogger _logger;
@@ -40,7 +38,7 @@ namespace UptimeRobotDotNetTests.Monitors
             var result = results?.FirstOrDefault();
 
             _logger.LogDebug($"{results?.Count} returned");
-            _logger.LogDebug(JsonSerializer.Serialize(results, JsonOptions));
+            _logger.LogDebug(JsonConvert.SerializeObject(results, JsonOptions));
 
             Assert.That(results, Is.Not.Null);
             Assert.That(result, Is.Not.Null);
@@ -54,11 +52,19 @@ namespace UptimeRobotDotNetTests.Monitors
             var results = client.Monitors(parameters).GetAwaiter().GetResult()?.Monitors;
             var random = new Random();
             var first = results?.Skip(random.Next(0, results.Count)).First();
+
+            // You can't ask for additional data attributes without filtering on monitors
             parameters.Monitors = first?.Id.ToString();
+            //parameters.Include_AlertContacts = 1;
+            parameters.Include_Custom_Http_Headers = 1;
+            //parameters.Include_Custom_Http_Statuses = 1;
+            parameters.Include_Http_Request_Details = true;
+            //parameters.Include_Maintenance_Windows = 1;
+
             var find = await client.Monitor(parameters);
             var result = find?.Monitors.FirstOrDefault();
 
-            _logger.LogDebug(JsonSerializer.Serialize(result, JsonOptions));
+            _logger.LogDebug(JsonConvert.SerializeObject(result, JsonOptions));
 
             Assert.Multiple(() =>
             {
@@ -67,7 +73,7 @@ namespace UptimeRobotDotNetTests.Monitors
             });
         }
 
-        [TestCase(ApiKey), Explicit, Obsolete("Delete not currently operational")]
+        [TestCase(ApiKey), Explicit]
         public async Task MonitorCreateUpdateDelete(string apiKey)
         {
             var parameters = new MonitorCreateParameters
@@ -86,16 +92,18 @@ namespace UptimeRobotDotNetTests.Monitors
             var results = client.Monitors().GetAwaiter().GetResult()?.Monitors;
             var exists = results?.FirstOrDefault(c => parameters.Url.Equals(c.Url));
             var deleteParameters = new MonitorDeleteParameters();
-            //if (exists != null)
-            //{
-            //    deleteParameters.Id = exists.Id;
-            //    await client.MonitorDelete(deleteParameters);
-            //}
+            if (exists != null)
+            {
+                _logger.LogDebug(JsonConvert.SerializeObject(exists, JsonOptions));
+
+                deleteParameters.Id = exists.Id;
+                await client.MonitorDelete(deleteParameters);
+            }
 
             // create
             var result = await client.MonitorCreate(parameters);
 
-            _logger.LogDebug(JsonSerializer.Serialize(result, JsonOptions));
+            _logger.LogDebug(JsonConvert.SerializeObject(result, JsonOptions));
 
             Assert.Multiple(() =>
             {
@@ -115,7 +123,7 @@ namespace UptimeRobotDotNetTests.Monitors
             //updateParameters.Custom_Http_Headers.Add(TestHeaderKey + "2", TestHeaderValue);
             var update = await client.MonitorUpdate(updateParameters);
 
-            _logger.LogDebug(JsonSerializer.Serialize(update, JsonOptions));
+            _logger.LogDebug(JsonConvert.SerializeObject(update, JsonOptions));
 
             Assert.Multiple(() =>
             {
@@ -130,7 +138,7 @@ namespace UptimeRobotDotNetTests.Monitors
             deleteParameters.Id = update.Monitor.Id;
             var delete = await client.MonitorDelete(deleteParameters);
 
-            _logger.LogDebug(JsonSerializer.Serialize(delete, JsonOptions));
+            _logger.LogDebug(JsonConvert.SerializeObject(delete, JsonOptions));
 
             Assert.Multiple(() =>
             {

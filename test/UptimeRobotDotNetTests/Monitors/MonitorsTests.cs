@@ -129,7 +129,7 @@ namespace UptimeRobotDotNetTests.Monitors
             Assert.ThrowsAsync<HttpRequestException>(() => client.MonitorCreate(mockParameters));
         }
 
-        [Test, Explicit, Obsolete("Delete not currently operational")]
+        [Test]
         public async Task MonitorDelete()
         {
             var mockParameters = new MonitorDeleteParameters { Id = TestId };
@@ -149,7 +149,7 @@ namespace UptimeRobotDotNetTests.Monitors
             _logger.LogDebug(JsonSerializer.Serialize(result, _jsonSerializerOptions));
         }
 
-        [Test, Explicit, Obsolete("Delete not currently operational")]
+        [Test]
         public void MonitorDeleteNotFound()
         {
             var mockParameters = new MonitorDeleteParameters { Id = TestId };

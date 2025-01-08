@@ -1,72 +1,89 @@
 ﻿using System.Collections.Generic;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace UptimeRobotDotnet.Models
 {
     public class UtrResponse
     {
-        [JsonPropertyName("stat")]
+        [JsonProperty("stat")]
         public string Stat { get; set; }
-        [JsonPropertyName("pagination")]
+        [JsonProperty("pagination")]
         public UtrPagination Pagination { get; set; }
-        [JsonPropertyName("error")]
+        [JsonProperty("error")]
         public object Error { get; set; }
-        [JsonPropertyName("monitor")]
+        [JsonProperty("monitor")]
         public UrtResponseActionMonitor Monitor { get; set; }
-        [JsonPropertyName("monitors")]
+        [JsonProperty("monitors")]
         public List<UrtResponseMonitor> Monitors { get; set; }
     }
 
     public class UtrPagination
     {
-        [JsonPropertyName("offset")]
+        [JsonProperty("offset")]
         public int Offset { get; set; }
-        [JsonPropertyName("limit")]
+        [JsonProperty("limit")]
         public int Limit { get; set; }
-        [JsonPropertyName("total")]
+        [JsonProperty("total")]
         public int Total { get; set; }
     }
 
     public class UrtResponseActionMonitor
     {
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public int Id { get; set; }
-        [JsonPropertyName("status")]
+        [JsonProperty("status")]
         public int? Status { get; set; }
     }
 
     public class UrtResponseMonitor
     {
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public int Id { get; set; }
-        [JsonPropertyName("friendly_name")]
+        [JsonProperty("friendly_name")]
         public string Friendly_Name { get; set; }
-        [JsonPropertyName("url")]
+        [JsonProperty("url")]
         public string Url { get; set; }
-        [JsonPropertyName("type")]
+        [JsonProperty("type")]
         public int? Type { get; set; }
-        [JsonPropertyName("sub_type")]
+        [JsonProperty("sub_type")]
         public string Sub_Type { get; set; }
-        [JsonPropertyName("keyword_type")]
+        [JsonProperty("keyword_type")]
         public int? Keyword_Type { get; set; }
-        [JsonPropertyName("keyword_case_type")]
+        [JsonProperty("keyword_case_type")]
         public int? Keyword_Case_Type { get; set; }
-        [JsonPropertyName("keyword_value")]
+        [JsonProperty("keyword_value")]
         public string Keyword_Value { get; set; }
-        [JsonPropertyName("http_username")]
+        [JsonProperty("http_username")]
         public string Http_Username { get; set; }
-        [JsonPropertyName("http_password")]
+        [JsonProperty("http_password")]
         public string Http_Password { get; set; }
-        [JsonPropertyName("port")]
+        [JsonProperty("port")]
         public string Port { get; set; }
-        [JsonPropertyName("interval")]
+        [JsonProperty("interval")]
         public int? Interval { get; set; }
-        [JsonPropertyName("status")]
+        [JsonProperty("status")]
         public int? Status { get; set; }
-        [JsonPropertyName("create_datetime")]
+        [JsonProperty("create_datetime")]
         public int? Create_DateTime { get; set; }
 
-        [JsonPropertyName("custom_http_headers")]
+        // Optional data includes
+
+        //[JsonProperty("alert_contacts")]
+        //public List<object> AlertContacts { get; set; }
+
+        [JsonProperty("custom_http_headers")]
         public Dictionary<string, string> Custom_Http_Headers { get; set; }
+
+        //[JsonProperty("custom_http_statuses")]
+        //public Dictionary<string, object> Custom_Http_Statuses { get; set; }
+
+        [JsonProperty("http_method")]
+        public int Http_Method { get; set; }
+
+        //[JsonProperty("mwindows")]
+        //public Dictionary<string, object> Maintenance_Windows { get; set; }
+	
+        //[JsonProperty("ssl")]
+        //public object Ssl { get; set; }
     }
 }
