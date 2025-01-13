@@ -12,9 +12,9 @@ namespace UptimeRobotDotnet.Models
         [JsonProperty("error")]
         public object Error { get; set; }
         [JsonProperty("monitor")]
-        public UrtResponseActionMonitor Monitor { get; set; }
+        public UtrResponseActionMonitor Monitor { get; set; }
         [JsonProperty("monitors")]
-        public List<UrtResponseMonitor> Monitors { get; set; }
+        public List<UtrResponseMonitor> Monitors { get; set; }
     }
 
     public class UtrPagination
@@ -27,7 +27,7 @@ namespace UptimeRobotDotnet.Models
         public int Total { get; set; }
     }
 
-    public class UrtResponseActionMonitor
+    public class UtrResponseActionMonitor
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -35,7 +35,7 @@ namespace UptimeRobotDotnet.Models
         public int? Status { get; set; }
     }
 
-    public class UrtResponseMonitor
+    public class UtrResponseMonitor
     {
         [JsonProperty("id")]
         public int Id { get; set; }

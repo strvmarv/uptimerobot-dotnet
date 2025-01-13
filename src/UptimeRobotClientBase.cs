@@ -11,6 +11,8 @@ namespace UptimeRobotDotnet
     {
         public const string DefaultApiUrl = "https://api.uptimerobot.com";
         public const string DefaultApiVersion = "v2";
+        public const string OkResponse = "ok";
+        public const string FailResponse = "fail";
 
         protected readonly HttpClient HttpClient;
         private readonly string _apiVersion;

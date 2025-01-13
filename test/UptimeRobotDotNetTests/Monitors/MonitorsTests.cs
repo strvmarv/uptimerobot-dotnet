@@ -139,12 +139,12 @@ namespace UptimeRobotDotNetTests.Monitors
                     .UsingPost())
                 .RespondWith(Response.Create()
                     .WithStatusCode(200)
-                    .WithBodyAsJson(new { stat = OkResponse }));
+                    .WithBodyAsJson(new { stat = UptimeRobotClientBase.OkResponse }));
 
             var client = UptimeRobotClientFactory.Create(Server.CreateClient(), TestApiKey);
             var result = await client.MonitorDelete(mockParameters);
 
-            Assert.That(OkResponse.Equals(result.Stat), Is.True);
+            Assert.That(UptimeRobotClientBase.OkResponse.Equals(result.Stat), Is.True);
 
             _logger.LogDebug(JsonSerializer.Serialize(result, _jsonSerializerOptions));
         }
@@ -175,7 +175,7 @@ namespace UptimeRobotDotNetTests.Monitors
                     .UsingPost())
                 .RespondWith(Response.Create()
                     .WithStatusCode(200)
-                    .WithBodyAsJson(new { stat = OkResponse }));
+                    .WithBodyAsJson(new { stat = UptimeRobotClientBase.OkResponse }));
 
             var client = UptimeRobotClientFactory.Create(Server.CreateClient(), TestApiKey);
             var result = await client.MonitorUpdate(mockParameters);

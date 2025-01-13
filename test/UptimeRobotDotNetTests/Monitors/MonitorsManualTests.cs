@@ -143,7 +143,7 @@ namespace UptimeRobotDotNetTests.Monitors
             Assert.Multiple(() =>
             {
                 Assert.That(delete, Is.Not.Null);
-                Assert.That(OkResponse.Equals(delete.Stat), Is.True);
+                Assert.That(UptimeRobotClientBase.OkResponse.Equals(delete.Stat), Is.True);
             });
         }
     }

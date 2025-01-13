@@ -5,9 +5,6 @@ namespace UptimeRobotDotNetTests
 {
     public class BaseTest
     {
-        public const string OkResponse = "ok";
-        public const string FailResponse = "fail";
-
         protected ILogger Logger;
         protected ILoggerFactory LoggerFactory;
 
