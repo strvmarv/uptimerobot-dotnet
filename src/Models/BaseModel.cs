@@ -1,59 +1,38 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace UptimeRobotDotnet.Models
 {
     public class BaseModel
     {
-        [JsonProperty("api_key")]
-        public string Api_Key { get; set; }
-    }
+        [JsonPropertyName("api_key")]
+        public string api_key { get; set; }
 
-    public static class Extensions
-    {
-        public static IDictionary<string, string> ToKeyValue(this object metaToken)
+
+        public Dictionary<string, object> GetContentForRequest()
         {
-            if (metaToken == null)
-            {
-                return null;
-            }
+            var dict = new Dictionary<string, object>();
 
-            JToken token = metaToken as JToken;
-            if (token == null)
+            foreach (var prop in this.GetType().GetProperties())
             {
-                return ToKeyValue(JObject.FromObject(metaToken));
-            }
-
-            if (token.HasValues)
-            {
-                var contentData = new Dictionary<string, string>();
-                foreach (var child in token.Children().ToList())
+                var value = prop.GetValue(this);
+                if (value != null)
                 {
-                    var childContent = child.ToKeyValue();
-                    if (childContent != null)
+                    if (prop.Name.Equals("custom_http_headers", StringComparison.OrdinalIgnoreCase))
                     {
-                        contentData = contentData.Concat(childContent)
-                            .ToDictionary(k => k.Key, v => v.Value);
+                        // Overrides
+                        dict.Add("custom_http_headers", JsonSerializer.Serialize(value));
+                    }
+                    else
+                    {
+                        dict.Add(prop.Name, value);
                     }
                 }
-
-                return contentData;
             }
 
-            var jValue = token as JValue;
-            if (jValue?.Value == null)
-            {
-                return null;
-            }
-
-            var value = jValue?.Type == JTokenType.Date ?
-                jValue?.ToString("o", CultureInfo.InvariantCulture) :
-                jValue?.ToString(CultureInfo.InvariantCulture);
-
-            return new Dictionary<string, string> { { token.Path, value } };
+            return dict;
         }
     }
 }

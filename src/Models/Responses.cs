@@ -1,89 +1,89 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace UptimeRobotDotnet.Models
 {
     public class UtrResponse
     {
-        [JsonProperty("stat")]
+        [JsonPropertyName("stat")]
         public string Stat { get; set; }
-        [JsonProperty("pagination")]
+        [JsonPropertyName("pagination")]
         public UtrPagination Pagination { get; set; }
-        [JsonProperty("error")]
+        [JsonPropertyName("error")]
         public object Error { get; set; }
-        [JsonProperty("monitor")]
+        [JsonPropertyName("monitor")]
         public UtrResponseActionMonitor Monitor { get; set; }
-        [JsonProperty("monitors")]
+        [JsonPropertyName("monitors")]
         public List<UtrResponseMonitor> Monitors { get; set; }
     }
 
     public class UtrPagination
     {
-        [JsonProperty("offset")]
+        [JsonPropertyName("offset")]
         public int Offset { get; set; }
-        [JsonProperty("limit")]
+        [JsonPropertyName("limit")]
         public int Limit { get; set; }
-        [JsonProperty("total")]
+        [JsonPropertyName("total")]
         public int Total { get; set; }
     }
 
     public class UtrResponseActionMonitor
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public int Id { get; set; }
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public int? Status { get; set; }
     }
 
     public class UtrResponseMonitor
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public int Id { get; set; }
-        [JsonProperty("friendly_name")]
+        [JsonPropertyName("friendly_name")]
         public string Friendly_Name { get; set; }
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
-        [JsonProperty("type")]
-        public int? Type { get; set; }
-        [JsonProperty("sub_type")]
+        [JsonPropertyName("type")]
+        public MonitorType? Type { get; set; }
+        [JsonPropertyName("sub_type")]
         public string Sub_Type { get; set; }
-        [JsonProperty("keyword_type")]
-        public int? Keyword_Type { get; set; }
-        [JsonProperty("keyword_case_type")]
-        public int? Keyword_Case_Type { get; set; }
-        [JsonProperty("keyword_value")]
+        [JsonPropertyName("keyword_type")]
+        public KeywordType? Keyword_Type { get; set; }
+        [JsonPropertyName("keyword_case_type")]
+        public KeywordCaseType? Keyword_Case_Type { get; set; }
+        [JsonPropertyName("keyword_value")]
         public string Keyword_Value { get; set; }
-        [JsonProperty("http_username")]
+        [JsonPropertyName("http_username")]
         public string Http_Username { get; set; }
-        [JsonProperty("http_password")]
+        [JsonPropertyName("http_password")]
         public string Http_Password { get; set; }
-        [JsonProperty("port")]
+        [JsonPropertyName("port")]
         public string Port { get; set; }
-        [JsonProperty("interval")]
+        [JsonPropertyName("interval")]
         public int? Interval { get; set; }
-        [JsonProperty("status")]
-        public int? Status { get; set; }
-        [JsonProperty("create_datetime")]
+        [JsonPropertyName("status")]
+        public Status? Status { get; set; }
+        [JsonPropertyName("create_datetime")]
         public int? Create_DateTime { get; set; }
 
         // Optional data includes
 
-        //[JsonProperty("alert_contacts")]
+        //[JsonPropertyName("alert_contacts")]
         //public List<object> AlertContacts { get; set; }
 
-        [JsonProperty("custom_http_headers")]
+        [JsonPropertyName("custom_http_headers")]
         public Dictionary<string, string> Custom_Http_Headers { get; set; }
 
-        //[JsonProperty("custom_http_statuses")]
+        //[JsonPropertyName("custom_http_statuses")]
         //public Dictionary<string, object> Custom_Http_Statuses { get; set; }
 
-        [JsonProperty("http_method")]
-        public int Http_Method { get; set; }
+        [JsonPropertyName("http_method")]
+        public HttpMethod Http_Method { get; set; }
 
-        //[JsonProperty("mwindows")]
+        //[JsonPropertyName("mwindows")]
         //public Dictionary<string, object> Maintenance_Windows { get; set; }
 	
-        //[JsonProperty("ssl")]
+        //[JsonPropertyName("ssl")]
         //public object Ssl { get; set; }
     }
 }

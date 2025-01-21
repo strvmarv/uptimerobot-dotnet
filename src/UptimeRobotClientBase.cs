@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using UptimeRobotDotnet.Models;
 
 namespace UptimeRobotDotnet
@@ -24,9 +23,9 @@ namespace UptimeRobotDotnet
             _apiVersion = apiVersion;
         }
 
-        private static readonly JsonSerializerSettings JsonOptions = new JsonSerializerSettings
+        private static readonly JsonSerializerOptions JsonOptions = new JsonSerializerOptions
         {
-
+            
         };
 
         public static Uri GetDefaultBaseApiUri()
@@ -44,24 +43,24 @@ namespace UptimeRobotDotnet
             return new Uri($"{DefaultApiVersion}/{path}", UriKind.Relative);
         }
 
-        protected async Task<T> PostAsync<T,TU>(Uri path, TU content)
+        protected async Task<T> PostAsync<T>(Uri path, IContentModel content)
         {
-            var encodedContent = content.ToKeyValue();
-            encodedContent.Add(new KeyValuePair<string, string>("format", "json"));
-            var reqContent = new FormUrlEncodedContent(encodedContent);
-            var resp = await HttpClient.PostAsync(path, reqContent).ConfigureAwait(false);
+            var parsedContent = content.GetContentForRequest();
+            var serializedContent = new UtrFormUrlEncodedContent(parsedContent);
+
+            var resp = await HttpClient.PostAsync(path, serializedContent).ConfigureAwait(false);
             var respContent = await resp.Content.ReadAsStringAsync().ConfigureAwait(false); // Not using stream here due to "stat: fail" scenario
 
             // API returns non-Http errors as a dynamic payload, detect and throw for consumer to manage
             if (respContent.Contains("stat") && respContent.Contains("fail"))
             {
-                var error = JsonConvert.DeserializeObject<UtrResponse>(respContent, JsonOptions);
+                var error = JsonSerializer.Deserialize<UtrResponse>(respContent, JsonOptions);
                 throw new HttpRequestException($"Request Failed: {respContent}");
             }
 
             resp.EnsureSuccessStatusCode();
 
-            var result = JsonConvert.DeserializeObject<T>(respContent, JsonOptions);
+            var result = JsonSerializer.Deserialize<T>(respContent, JsonOptions);
             return result;
         }
     }
