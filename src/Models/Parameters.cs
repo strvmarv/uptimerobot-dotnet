@@ -96,8 +96,8 @@ namespace UptimeRobotDotnet.Models
 
         // Optional data includes
 
-        //[JsonPropertyName("alert_contacts")]
-        //public int Alert_Contacts { get; set; }
+        [JsonPropertyName("alert_contacts")]
+        public int Alert_Contacts { get; set; }
 
         [JsonPropertyName("custom_http_headers")]
         public int Custom_Http_Headers { get; set; }
@@ -105,11 +105,11 @@ namespace UptimeRobotDotnet.Models
         [JsonPropertyName("http_request_details")]
         public bool Http_Request_Details { get; set; }
 
-        //[JsonPropertyName("custom_http_statuses")]
-        //public int Custom_Http_Statuses { get; set; }
+        [JsonPropertyName("custom_http_statuses")]
+        public int Custom_Http_Statuses { get; set; }
 
-        //[JsonPropertyName("mwindows")]
-        //public int Mwindows { get; set; }
+        [JsonPropertyName("mwindows")]
+        public int Mwindows { get; set; }
     }
 
     public class MonitorUpdateParameters : Monitor

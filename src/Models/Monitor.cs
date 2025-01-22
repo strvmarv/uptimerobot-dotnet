@@ -12,6 +12,7 @@ namespace UptimeRobotDotnet.Models
         {
             Friendly_Name = createParameters.Friendly_Name;
             Url = createParameters.Url;
+            Type = createParameters.Type;
             Sub_Type = createParameters.Sub_Type?.ToString();
             Port = createParameters.Port;
             Keyword_Type = createParameters.Keyword_Type;
@@ -41,6 +42,8 @@ namespace UptimeRobotDotnet.Models
         [JsonPropertyName("url")]
         public string Url { get; set; }
 
+        [JsonPropertyName("type")]
+        public int Type { get; set; }
         [JsonPropertyName("sub_type")]
         public string Sub_Type { get; set; }
         [JsonPropertyName("port")]
@@ -68,17 +71,17 @@ namespace UptimeRobotDotnet.Models
         [JsonPropertyName("post_type")]
         public PostType? Post_Type { get; set; }
         [JsonPropertyName("post_value")]
-        public string Post_Value { get; set; }
+        public object Post_Value { get; set; }
         [JsonPropertyName("post_content_type")]
         public PostContentType? Post_Content_Type { get; set; }
         [JsonPropertyName("alert_contacts")]
-        public List<string> Alert_Contacts { get; set; }
+        public object Alert_Contacts { get; set; }
         [JsonPropertyName("mwindows")]
         public List<string> Mwindows { get; set; }
         [JsonPropertyName("custom_http_headers")]
         public Dictionary<string, string> Custom_Http_Headers { get; set; }
         [JsonPropertyName("custom_http_statuses")]
-        public string Custom_Http_Statuses { get; set; }
+        public object Custom_Http_Statuses { get; set; }
         [JsonPropertyName("ignore_ssl_errors")]
         public bool? Ignore_Ssl_Errors { get; set; }
         [JsonPropertyName("disable_domain_expire_notifications")]

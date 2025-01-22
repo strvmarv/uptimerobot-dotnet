@@ -56,11 +56,11 @@ namespace UptimeRobotDotNetTests.Monitors
 
             // You can't ask for additional data attributes without filtering on monitors
             parameters.Monitors = first?.Id.ToString();
-            //parameters.Include_AlertContacts = 1;
+            parameters.Alert_Contacts = 1;
             parameters.Custom_Http_Headers = 1;
-            //parameters.Include_Custom_Http_Statuses = 1;
+            parameters.Custom_Http_Statuses = 1;
             parameters.Http_Request_Details = true;
-            //parameters.Include_Maintenance_Windows = 1;
+            parameters.Mwindows = 1;
 
             var find = await client.Monitor(parameters);
             var result = find?.Monitors.FirstOrDefault();
