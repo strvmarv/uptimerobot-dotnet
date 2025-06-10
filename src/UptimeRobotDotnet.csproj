@@ -10,7 +10,7 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
 		<PackageId>UptimeRobotDotnet</PackageId>
-		<PackageVersion>1.0.5</PackageVersion>
+		<PackageVersion>1.0.6</PackageVersion>
 		<Authors>strvmarv</Authors>
 		<Description>A simple UptimeRobot.com API client for .NET</Description>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -19,7 +19,7 @@
 		<PackageTags>uptimerobot monitoring api</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>
-			consolidate models
+			dependency updates
 		</PackageReleaseNotes>
 	</PropertyGroup>
 
