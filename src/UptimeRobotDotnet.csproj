@@ -11,7 +11,7 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
 		<PackageId>UptimeRobotDotnet</PackageId>
-		<PackageVersion>2.0.0-rc.1</PackageVersion>
+		<PackageVersion>2.0.0-rc.2</PackageVersion>
 		<Authors>strvmarv</Authors>
 		<Description>A modern UptimeRobot.com API client for .NET with full API coverage, pagination support, and nullable reference types. Supports .NET 9.0, .NET 8.0, .NET 6.0, and .NET Standard 2.0. This is a RELEASE CANDIDATE with breaking changes from v1.x - test before upgrading production systems.</Description>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -25,10 +25,15 @@
 		<ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
 		<Deterministic>true</Deterministic>
 		<PackageReleaseNotes>
-			v2.0.0-rc.1 - RELEASE CANDIDATE - Please test before production use
-
+			v2.0.0-rc.2 - RELEASE CANDIDATE - Please test before production use
+			
 			⚠️ BREAKING CHANGES - This is a pre-release version with major changes from v1.x
-
+			
+			What's New in RC.2:
+			- Fixed JSON deserialization error with nullable enums
+			- Added NullableEnumConverter to handle empty strings and unknown enum values from API
+			- Improved resilience when API returns unexpected data
+			
 			Major Changes:
 			- Modernized API surface with PascalCase property names
 			- Enabled nullable reference types throughout
