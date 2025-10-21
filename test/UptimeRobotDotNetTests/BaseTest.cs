@@ -3,11 +3,24 @@ using Microsoft.Extensions.Logging;
 
 namespace UptimeRobotDotNetTests
 {
+    /// <summary>
+    /// Base test class with logging support.
+    /// </summary>
     public class BaseTest
     {
-        protected ILogger Logger;
-        protected ILoggerFactory LoggerFactory;
+        /// <summary>
+        /// Gets the logger instance.
+        /// </summary>
+        protected ILogger Logger { get; }
 
+        /// <summary>
+        /// Gets the logger factory.
+        /// </summary>
+        protected ILoggerFactory LoggerFactory { get; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseTest"/> class.
+        /// </summary>
         protected BaseTest()
         {
             var serviceProvider = new ServiceCollection()
@@ -19,8 +32,7 @@ namespace UptimeRobotDotNetTests
                 })
                 .BuildServiceProvider();
 
-            LoggerFactory = serviceProvider.GetService<ILoggerFactory>();
-
+            LoggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
             Logger = LoggerFactory.CreateLogger<BaseTest>();
         }
     }
