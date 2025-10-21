@@ -11,7 +11,7 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
 		<PackageId>UptimeRobotDotnet</PackageId>
-		<PackageVersion>2.0.0-rc.2</PackageVersion>
+		<PackageVersion>2.0.0-rc.3</PackageVersion>
 		<Authors>strvmarv</Authors>
 		<Description>A modern UptimeRobot.com API client for .NET with full API coverage, pagination support, and nullable reference types. Supports .NET 9.0, .NET 8.0, .NET 6.0, and .NET Standard 2.0. This is a RELEASE CANDIDATE with breaking changes from v1.x - test before upgrading production systems.</Description>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -25,16 +25,21 @@
 		<ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
 		<Deterministic>true</Deterministic>
 		<PackageReleaseNotes>
-			v2.0.0-rc.2 - RELEASE CANDIDATE - Please test before production use
+			v2.0.0-rc.3 - RELEASE CANDIDATE 3 - Please test before production use
 			
 			⚠️ BREAKING CHANGES - This is a pre-release version with major changes from v1.x
 			
-			What's New in RC.2:
-			- Fixed JSON deserialization error with nullable enums
-			- Added NullableEnumConverter to handle empty strings and unknown enum values from API
-			- Improved resilience when API returns unexpected data
+			What's Fixed in RC.3:
+			- Fixed critical enum serialization bug where MonitorType and other enums were sent as strings instead of numbers
+			- Fixed maintenance windows deserialization error when requesting monitor details with Mwindows parameter
+			- Monitor.Mwindows property changed from List&lt;string&gt; to object to handle polymorphic API responses
 			
-			Major Changes:
+			What was Fixed in RC.2:
+			- Fixed JSON deserialization error with nullable enums and empty string values from API
+			- Added NullableEnumConverter to gracefully handle unexpected enum values
+			- Improved API resilience and error handling
+			
+			Major Features from RC.1:
 			- Modernized API surface with PascalCase property names
 			- Enabled nullable reference types throughout
 			- Added strongly-typed enum parameters (no more magic numbers)

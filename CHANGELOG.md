@@ -5,15 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.0-rc.2] - 2025-01-XX (Release Candidate 2)
+## [2.0.0-rc.3] - 2025-01-29 (Release Candidate 3)
+
+### Fixed
+- **Enum Serialization**: Fixed critical bug where enum values (like `MonitorType`, `MonitorStatus`, etc.) were being sent as string names instead of numeric values to the API, causing "must be a number" errors
+  - Added explicit enum-to-integer conversion in `UtrFormUrlEncodedContent`
+  - All enum parameters now correctly serialize as their underlying integer values (e.g., `MonitorType.HTTP` → `1`)
+- **Maintenance Windows Deserialization**: Fixed JSON deserialization error when requesting monitor details with `Mwindows = 1` parameter
+  - Changed `Monitor.Mwindows` property from `List<string>?` to `object?` to handle polymorphic API responses
+  - API returns string IDs when maintenance windows are not requested, and full objects when requested
+  - Consistent with existing `AlertContacts` and `CustomHttpStatuses` properties
+
+### Changed
+- Applied consistent polymorphic type handling across all dynamic API response properties
+
+## [2.0.0-rc.2] - 2025-01-28 (Release Candidate 2)
 
 ### Fixed
 - **JSON Deserialization Error**: Fixed issue where nullable enum properties (like `MonitorSubType`) would throw exceptions when API returned empty strings or unknown values
-- Added `NullableEnumConverter<T>` that gracefully handles:
-  - Empty strings from API (converts to null)
-  - Unknown enum values (converts to null instead of throwing)
-  - Both string and integer enum representations
-- Improved API resilience - library no longer crashes on unexpected enum values
+  - Added `NullableEnumConverter<T>` that gracefully handles:
+    - Empty strings from API (converts to null)
+    - Unknown enum values (converts to null instead of throwing)
+    - Both string and integer enum representations
+  - Improved API resilience - library no longer crashes on unexpected enum values
 
 ### Changed
 - Applied NullableEnumConverter to all nullable enum properties for consistent behavior

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
@@ -172,7 +172,7 @@ namespace UptimeRobotDotnet.Models
         /// Gets or sets the maintenance windows for this monitor.
         /// </summary>
         [JsonPropertyName("mwindows")]
-        public List<string>? Mwindows { get; set; }
+        public object? Mwindows { get; set; }
 
         /// <summary>
         /// Gets or sets custom HTTP headers.
