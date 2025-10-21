@@ -29,13 +29,13 @@ A modern, fully-featured [UptimeRobot](https://uptimerobot.com) .NET client libr
 To test the v2.0.0 release candidate:
 
 ```bash
-dotnet add package UptimeRobotDotnet --version 2.0.0-rc.1
+dotnet add package UptimeRobotDotnet --version 2.0.0-rc.2
 ```
 
 Or via Package Manager Console:
 
 ```powershell
-Install-Package UptimeRobotDotnet -Version 2.0.0-rc.1
+Install-Package UptimeRobotDotnet -Version 2.0.0-rc.2
 ```
 
 ### Installing Stable Version (v1.x)

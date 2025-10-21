@@ -49,7 +49,25 @@ namespace UptimeRobotDotnet
 
         private static readonly JsonSerializerOptions JsonOptions = new JsonSerializerOptions
         {
-            PropertyNameCaseInsensitive = true
+            PropertyNameCaseInsensitive = true,
+            NumberHandling = System.Text.Json.Serialization.JsonNumberHandling.AllowReadingFromString,
+            Converters =
+            {
+                new Converters.NullableEnumConverter<Models.MonitorSubType>(),
+                new Converters.NullableEnumConverter<Models.KeywordType>(),
+                new Converters.NullableEnumConverter<Models.KeywordCaseType>(),
+                new Converters.NullableEnumConverter<Models.HttpAuthType>(),
+                new Converters.NullableEnumConverter<Models.HttpMethod>(),
+                new Converters.NullableEnumConverter<Models.PostType>(),
+                new Converters.NullableEnumConverter<Models.PostContentType>(),
+                new Converters.NullableEnumConverter<Models.MonitorStatus>(),
+                new Converters.NullableEnumConverter<Models.AlertContactType>(),
+                new Converters.NullableEnumConverter<Models.AlertContactStatus>(),
+                new Converters.NullableEnumConverter<Models.MaintenanceWindowType>(),
+                new Converters.NullableEnumConverter<Models.MaintenanceWindowStatus>(),
+                new Converters.NullableEnumConverter<Models.StatusPageStatus>(),
+                new Converters.NullableEnumConverter<Models.StatusPageSort>()
+            }
         };
 
         /// <summary>

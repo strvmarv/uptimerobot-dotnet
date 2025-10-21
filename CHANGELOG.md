@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0-rc.2] - 2025-01-XX (Release Candidate 2)
+
+### Fixed
+- **JSON Deserialization Error**: Fixed issue where nullable enum properties (like `MonitorSubType`) would throw exceptions when API returned empty strings or unknown values
+- Added `NullableEnumConverter<T>` that gracefully handles:
+  - Empty strings from API (converts to null)
+  - Unknown enum values (converts to null instead of throwing)
+  - Both string and integer enum representations
+- Improved API resilience - library no longer crashes on unexpected enum values
+
+### Changed
+- Applied NullableEnumConverter to all nullable enum properties for consistent behavior
+
 ## [2.0.0-rc.1] - 2025-01-XX (Release Candidate)
 
 ⚠️ **RELEASE CANDIDATE** - This is a pre-release version for testing. Please report any issues on GitHub.
