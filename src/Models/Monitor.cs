@@ -4,87 +4,198 @@ using System.Text.Json.Serialization;
 
 namespace UptimeRobotDotnet.Models
 {
+    /// <summary>
+    /// Represents a monitor in UptimeRobot.
+    /// </summary>
     public class Monitor : BaseModel, IContentModel
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Monitor"/> class.
+        /// </summary>
         public Monitor() { }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Monitor"/> class from create parameters.
+        /// </summary>
+        /// <param name="createParameters">The parameters used to create the monitor.</param>
         public Monitor(MonitorCreateParameters createParameters)
         {
-            Friendly_Name = createParameters.Friendly_Name;
+            if (createParameters == null)
+                throw new ArgumentNullException(nameof(createParameters));
+
+            FriendlyName = createParameters.FriendlyName;
             Url = createParameters.Url;
             Type = createParameters.Type;
-            Sub_Type = createParameters.Sub_Type?.ToString();
+            SubType = createParameters.SubType;
             Port = createParameters.Port;
-            Keyword_Type = createParameters.Keyword_Type;
-            Keyword_Case_Type = createParameters.Keyword_Case_Type;
-            Keyword_Value = createParameters.Keyword_Value;
+            KeywordType = createParameters.KeywordType;
+            KeywordCaseType = createParameters.KeywordCaseType;
+            KeywordValue = createParameters.KeywordValue;
             Interval = createParameters.Interval;
             Timeout = createParameters.Timeout;
             Status = createParameters.Status;
-            Http_Username = createParameters.Http_Username;
-            Http_Password = createParameters.Http_Password;
-            Http_Auth_Type = createParameters.Http_Auth_Type;
-            Http_Method = createParameters.Http_Method;
-            Post_Type = createParameters.Post_Type;
-            Post_Value = createParameters.Post_Value;
-            Post_Content_Type = createParameters.Post_Content_Type;
-            Alert_Contacts = createParameters.Alert_Contacts;
-            Custom_Http_Headers = createParameters.Custom_Http_Headers;
-            Custom_Http_Statuses = createParameters.Custom_Http_Statuses;
-            Ignore_Ssl_Errors = createParameters.Ignore_Ssl_Errors;
-            Disable_Domain_Expire_Notifications = createParameters.Disable_Domain_Expire_Notifications;
+            HttpUsername = createParameters.HttpUsername;
+            HttpPassword = createParameters.HttpPassword;
+            HttpAuthType = createParameters.HttpAuthType;
+            HttpMethod = createParameters.HttpMethod;
+            PostType = createParameters.PostType;
+            PostValue = createParameters.PostValue;
+            PostContentType = createParameters.PostContentType;
+            AlertContacts = createParameters.AlertContacts;
+            CustomHttpHeaders = createParameters.CustomHttpHeaders;
+            CustomHttpStatuses = createParameters.CustomHttpStatuses;
+            IgnoreSslErrors = createParameters.IgnoreSslErrors;
+            DisableDomainExpireNotifications = createParameters.DisableDomainExpireNotifications;
         }
 
+        /// <summary>
+        /// Gets or sets the monitor ID.
+        /// </summary>
         [JsonPropertyName("id")]
         public int Id { get; set; }
-        [JsonPropertyName("friendly_name")]
-        public string Friendly_Name { get; set; }
-        [JsonPropertyName("url")]
-        public string Url { get; set; }
 
+        /// <summary>
+        /// Gets or sets the friendly name of the monitor.
+        /// </summary>
+        [JsonPropertyName("friendly_name")]
+        public string? FriendlyName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the URL being monitored.
+        /// </summary>
+        [JsonPropertyName("url")]
+        public string? Url { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the monitor.
+        /// </summary>
         [JsonPropertyName("type")]
-        public int Type { get; set; }
+        public MonitorType Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sub-type of the monitor (for port monitors).
+        /// </summary>
         [JsonPropertyName("sub_type")]
-        public string Sub_Type { get; set; }
+        public MonitorSubType? SubType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the port number (for port monitors).
+        /// </summary>
         [JsonPropertyName("port")]
-        public string Port { get; set; }
+        public string? Port { get; set; }
+
+        /// <summary>
+        /// Gets or sets the keyword type (for keyword monitors).
+        /// </summary>
         [JsonPropertyName("keyword_type")]
-        public KeywordType? Keyword_Type { get; set; }
+        public KeywordType? KeywordType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the keyword case sensitivity (for keyword monitors).
+        /// </summary>
         [JsonPropertyName("keyword_case_type")]
-        public KeywordCaseType? Keyword_Case_Type { get; set; }
+        public KeywordCaseType? KeywordCaseType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the keyword value (for keyword monitors).
+        /// </summary>
         [JsonPropertyName("keyword_value")]
-        public string Keyword_Value { get; set; }
+        public string? KeywordValue { get; set; }
+
+        /// <summary>
+        /// Gets or sets the check interval in seconds (60-3600).
+        /// </summary>
         [JsonPropertyName("interval")]
         public int? Interval { get; set; }
+
+        /// <summary>
+        /// Gets or sets the timeout in seconds (default is 30).
+        /// </summary>
         [JsonPropertyName("timeout")]
         public int? Timeout { get; set; }
+
+        /// <summary>
+        /// Gets or sets the status of the monitor.
+        /// </summary>
         [JsonPropertyName("status")]
-        public Status? Status { get; set; }
+        public MonitorStatus? Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets the HTTP basic authentication username.
+        /// </summary>
         [JsonPropertyName("http_username")]
-        public string Http_Username { get; set; }
+        public string? HttpUsername { get; set; }
+
+        /// <summary>
+        /// Gets or sets the HTTP basic authentication password.
+        /// </summary>
         [JsonPropertyName("http_password")]
-        public string Http_Password { get; set; }
+        public string? HttpPassword { get; set; }
+
+        /// <summary>
+        /// Gets or sets the HTTP authentication type.
+        /// </summary>
         [JsonPropertyName("http_auth_type")]
-        public HttpAuthType? Http_Auth_Type { get; set; }
+        public HttpAuthType? HttpAuthType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the HTTP method used for the request.
+        /// </summary>
         [JsonPropertyName("http_method")]
-        public HttpMethod? Http_Method { get; set; }
+        public HttpMethod? HttpMethod { get; set; }
+
+        /// <summary>
+        /// Gets or sets the POST data type.
+        /// </summary>
         [JsonPropertyName("post_type")]
-        public PostType? Post_Type { get; set; }
+        public PostType? PostType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the POST data value.
+        /// </summary>
         [JsonPropertyName("post_value")]
-        public object Post_Value { get; set; }
+        public object? PostValue { get; set; }
+
+        /// <summary>
+        /// Gets or sets the POST content type.
+        /// </summary>
         [JsonPropertyName("post_content_type")]
-        public PostContentType? Post_Content_Type { get; set; }
+        public PostContentType? PostContentType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the alert contacts for this monitor.
+        /// </summary>
         [JsonPropertyName("alert_contacts")]
-        public object Alert_Contacts { get; set; }
+        public object? AlertContacts { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maintenance windows for this monitor.
+        /// </summary>
         [JsonPropertyName("mwindows")]
-        public List<string> Mwindows { get; set; }
+        public List<string>? Mwindows { get; set; }
+
+        /// <summary>
+        /// Gets or sets custom HTTP headers.
+        /// </summary>
         [JsonPropertyName("custom_http_headers")]
-        public Dictionary<string, string> Custom_Http_Headers { get; set; }
+        public Dictionary<string, string>? CustomHttpHeaders { get; set; }
+
+        /// <summary>
+        /// Gets or sets custom HTTP status codes to consider as down.
+        /// </summary>
         [JsonPropertyName("custom_http_statuses")]
-        public object Custom_Http_Statuses { get; set; }
+        public object? CustomHttpStatuses { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to ignore SSL errors.
+        /// </summary>
         [JsonPropertyName("ignore_ssl_errors")]
-        public bool? Ignore_Ssl_Errors { get; set; }
+        public bool? IgnoreSslErrors { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to disable domain expiration notifications.
+        /// </summary>
         [JsonPropertyName("disable_domain_expire_notifications")]
-        public bool? Disable_Domain_Expire_Notifications { get; set; }
+        public bool? DisableDomainExpireNotifications { get; set; }
     }
 }
