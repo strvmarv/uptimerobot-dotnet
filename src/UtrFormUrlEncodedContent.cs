@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -48,6 +48,11 @@ namespace UptimeRobotDotnet
                 if (pair.Value is string stringValue)
                 {
                     builder.Append(Encode(stringValue));
+                }
+                else if (pair.Value is Enum enumValue)
+                {
+                    // Convert enum to its underlying integer value
+                    builder.Append(Convert.ToInt32(enumValue));
                 }
                 else
                 {
