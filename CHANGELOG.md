@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.0-rc.3] - 2025-01-29 (Release Candidate 3)
+## [2.0.0] - 2025-11-05
 
 ### Fixed
 - **Enum Serialization**: Fixed critical bug where enum values (like `MonitorType`, `MonitorStatus`, etc.) were being sent as string names instead of numeric values to the API, causing "must be a number" errors
@@ -15,36 +15,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Changed `Monitor.Mwindows` property from `List<string>?` to `object?` to handle polymorphic API responses
   - API returns string IDs when maintenance windows are not requested, and full objects when requested
   - Consistent with existing `AlertContacts` and `CustomHttpStatuses` properties
-
-### Changed
-- Applied consistent polymorphic type handling across all dynamic API response properties
-
-## [2.0.0-rc.2] - 2025-01-28 (Release Candidate 2)
-
-### Fixed
 - **JSON Deserialization Error**: Fixed issue where nullable enum properties (like `MonitorSubType`) would throw exceptions when API returned empty strings or unknown values
   - Added `NullableEnumConverter<T>` that gracefully handles:
     - Empty strings from API (converts to null)
     - Unknown enum values (converts to null instead of throwing)
     - Both string and integer enum representations
   - Improved API resilience - library no longer crashes on unexpected enum values
-
-### Changed
-- Applied NullableEnumConverter to all nullable enum properties for consistent behavior
-
-## [2.0.0-rc.1] - 2025-01-XX (Release Candidate)
-
-⚠️ **RELEASE CANDIDATE** - This is a pre-release version for testing. Please report any issues on GitHub.
-
-**What is a Release Candidate?**
-This version contains all planned features for v2.0.0 and is feature-complete. We're releasing it as RC to gather feedback and ensure stability before the final release. If no critical issues are found, this will become v2.0.0.
-
-**Testing Needed:**
-- Migration from v1.x to v2.0.0-rc.1
-- All API endpoints (Monitors, Alert Contacts, Maintenance Windows, Status Pages)
-- Pagination with large datasets
-- Exception handling scenarios
-- Multi-target framework compatibility
 
 ### Added
 - **Platform Support**: Added support for .NET 9.0 while maintaining compatibility with .NET 8.0, .NET 6.0, and .NET Standard 2.0
@@ -81,6 +57,8 @@ This version contains all planned features for v2.0.0 and is feature-complete. W
 - **Improved**: Error handling now parses and includes detailed API error messages
 - **Improved**: User-Agent updated to `uptimerobot-dotnet/2.0`
 - **Enhanced**: Better null-safety throughout the codebase with nullable reference types
+- **Enhanced**: Applied consistent polymorphic type handling across all dynamic API response properties
+- **Enhanced**: Applied NullableEnumConverter to all nullable enum properties for consistent behavior
 
 ### Deprecated
 - Old method names (now marked with `[Obsolete]` attribute):
@@ -139,9 +117,9 @@ await client.MonitorDelete(deleteParams);
 // v2.0
 var result = await client.GetMonitorsAsync();
 var monitor = await client.GetMonitorAsync(parameters);
-await client.CreateMonitorAsync(createParams);
-await client.UpdateMonitorAsync(updateParams);
-await client.DeleteMonitorAsync(deleteParams);
+await client.CreateMonitorAsync(parameters);
+await client.UpdateMonitorAsync(parameters);
+await client.DeleteMonitorAsync(parameters);
 ```
 
 ### Exception Handling
