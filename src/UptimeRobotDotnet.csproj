@@ -11,9 +11,9 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
 		<PackageId>UptimeRobotDotnet</PackageId>
-		<PackageVersion>2.0.0-rc.3</PackageVersion>
+		<PackageVersion>2.0.0</PackageVersion>
 		<Authors>strvmarv</Authors>
-		<Description>A modern UptimeRobot.com API client for .NET with full API coverage, pagination support, and nullable reference types. Supports .NET 9.0, .NET 8.0, .NET 6.0, and .NET Standard 2.0. This is a RELEASE CANDIDATE with breaking changes from v1.x - test before upgrading production systems.</Description>
+		<Description>A modern UptimeRobot.com API client for .NET with full API coverage, pagination support, and nullable reference types. Supports .NET 9.0, .NET 8.0, .NET 6.0, and .NET Standard 2.0. Version 2.0 includes breaking changes from v1.x - see migration guide in CHANGELOG.md.</Description>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/strvmarv/uptimerobot-dotnet</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -25,35 +25,31 @@
 		<ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
 		<Deterministic>true</Deterministic>
 		<PackageReleaseNotes>
-			v2.0.0-rc.3 - RELEASE CANDIDATE 3 - Please test before production use
+			v2.0.0 - STABLE RELEASE
 			
-			⚠️ BREAKING CHANGES - This is a pre-release version with major changes from v1.x
+			⚠️ BREAKING CHANGES - Major upgrade from v1.x with significant improvements
 			
-			What's Fixed in RC.3:
-			- Fixed critical enum serialization bug where MonitorType and other enums were sent as strings instead of numbers
-			- Fixed maintenance windows deserialization error when requesting monitor details with Mwindows parameter
-			- Monitor.Mwindows property changed from List&lt;string&gt; to object to handle polymorphic API responses
-			
-			What was Fixed in RC.2:
-			- Fixed JSON deserialization error with nullable enums and empty string values from API
-			- Added NullableEnumConverter to gracefully handle unexpected enum values
-			- Improved API resilience and error handling
-			
-			Major Features from RC.1:
-			- Modernized API surface with PascalCase property names
-			- Enabled nullable reference types throughout
-			- Added strongly-typed enum parameters (no more magic numbers)
+			Key Fixes:
+			- Fixed critical enum serialization bug (MonitorType, MonitorStatus, etc. now sent as numbers)
+			- Fixed maintenance windows deserialization with polymorphic API responses
+			- Fixed JSON deserialization errors with nullable enums and empty strings
+			- Improved API resilience with NullableEnumConverter for graceful error handling
+
+			Major Features:
+			- Modernized API surface with PascalCase property names (following .NET conventions)
+			- Enabled nullable reference types throughout for better null-safety
+			- Added strongly-typed enum parameters (no more magic numbers!)
 			- Implemented Alert Contacts, Maintenance Windows, and Status Pages APIs
 			- Added automatic pagination support with IAsyncEnumerable
 			- Added cancellation token support to all async methods
-			- Improved exception handling with custom exception types
-			- Added .NET 9.0 support
+			- Improved exception handling with UptimeRobotException, UptimeRobotApiException
+			- Added .NET 9.0 support while maintaining compatibility with .NET 8.0, 6.0, and Standard 2.0
 			- Added comprehensive XML documentation
-			- Performance optimizations
+			- Performance optimizations with reflection caching
 
-			Migration Guide: See CHANGELOG.md for detailed migration instructions
+			Migration Guide: See CHANGELOG.md for detailed migration instructions from v1.x
 
-			Please report any issues on GitHub before the final 2.0.0 release.
+			Full changelog: https://github.com/strvmarv/uptimerobot-dotnet/blob/main/CHANGELOG.md
 		</PackageReleaseNotes>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
