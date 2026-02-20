@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.3.0](https://github.com/strvmarv/uptimerobot-dotnet/compare/UptimeRobotDotnet-v2.2.0...UptimeRobotDotnet-v2.3.0) (2026-02-20)
+
+
+### Features
+
+* automate releases with release-please ([f1f34e1](https://github.com/strvmarv/uptimerobot-dotnet/commit/f1f34e1c3ffa65911e34afda5474305503c564bb))
+* automate releases with release-please ([36953c3](https://github.com/strvmarv/uptimerobot-dotnet/commit/36953c381e5803e05e4d0b76bfca7fa3b1b047b4))
+* Release v2.0.0-rc.1 with breaking changes and new features ([2b86af9](https://github.com/strvmarv/uptimerobot-dotnet/commit/2b86af90361ec63fb853c4437a2d7d33e25fe66a))
+
+
+### Bug Fixes
+
+* use !cancelled() instead of always() in publish job condition ([9b12e32](https://github.com/strvmarv/uptimerobot-dotnet/commit/9b12e32445a670f4da2dce3dc01f33f342f91b4a))
+
 ## [2.2.0](https://github.com/strvmarv/uptimerobot-dotnet/compare/v2.1.0...v2.2.0) (2026-02-19)
 
 ### Features
