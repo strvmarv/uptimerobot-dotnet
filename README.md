@@ -2,7 +2,7 @@
 
 # UptimeRobot .NET Client
 
-> ⚠️ **v2.1.0** - This release drops the explicit `net6.0` target framework (end-of-life) and updates core dependencies to .NET 10 packages. .NET 6 consumers are still supported via `netstandard2.0`. See [CHANGELOG.md](CHANGELOG.md) for details.
+> ⚠️ **v2.1.0** - This release drops the explicit `net6.0` target framework (end-of-life) and updates core dependencies to .NET 10 packages. .NET 6 consumers are still supported via `netstandard2.0`. See [CHANGELOG.md](https://github.com/strvmarv/uptimerobot-dotnet/blob/main/CHANGELOG.md) for details.
 
 A modern, fully-featured [UptimeRobot](https://uptimerobot.com) .NET client library with complete API coverage, automatic pagination, and strongly-typed models.
 
@@ -387,7 +387,7 @@ await client.GetMonitorsAsync();
 
 ### Breaking Changes from v1.x
 
-Version 2.0 introduces breaking changes for improved API design. See [CHANGELOG.md](CHANGELOG.md) for a complete migration guide.
+Version 2.0 introduces breaking changes for improved API design. See [CHANGELOG.md](https://github.com/strvmarv/uptimerobot-dotnet/blob/main/CHANGELOG.md) for a complete migration guide.
 
 **Key Changes:**
 - Properties renamed from `snake_case` to `PascalCase`
@@ -461,4 +461,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **v2.0.0** - Complete rewrite with breaking changes, full API coverage, and modern .NET features
 - **v1.0.x** - Initial releases with basic monitor support
 
-For detailed changes, see [CHANGELOG.md](CHANGELOG.md).
+For detailed changes, see [CHANGELOG.md](https://github.com/strvmarv/uptimerobot-dotnet/blob/main/CHANGELOG.md).
