@@ -11,7 +11,9 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
 		<PackageId>UptimeRobotDotnet</PackageId>
+		<!-- x-release-please-start-version -->
 		<PackageVersion>2.2.0</PackageVersion>
+		<!-- x-release-please-end -->
 		<Authors>strvmarv</Authors>
 		<Description>A modern UptimeRobot.com API client for .NET with full API coverage, pagination support, and nullable reference types. Supports .NET 10.0, .NET 9.0, .NET 8.0, and .NET Standard 2.0.</Description>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -24,15 +26,6 @@
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
 		<Deterministic>true</Deterministic>
-		<PackageReleaseNotes>
-			v2.2.0 - Added explicit .NET 10.0 support
-
-			Changes:
-			- Added net10.0 as an explicit target framework
-			- Targets: net10.0, net9.0, net8.0, netstandard2.0
-
-			Full changelog: https://github.com/strvmarv/uptimerobot-dotnet/blob/main/CHANGELOG.md
-		</PackageReleaseNotes>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 

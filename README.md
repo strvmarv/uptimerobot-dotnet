@@ -1,4 +1,4 @@
-[![build and test](https://github.com/strvmarv/uptimerobot-dotnet/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/strvmarv/uptimerobot-dotnet/actions/workflows/build-and-test.yml)
+[![CI](https://github.com/strvmarv/uptimerobot-dotnet/actions/workflows/ci.yml/badge.svg)](https://github.com/strvmarv/uptimerobot-dotnet/actions/workflows/ci.yml)
 
 # UptimeRobot .NET Client
 

@@ -491,13 +491,17 @@ var result = await client.GetMonitorsAsync();
 
 ### 2. Write Clear Commit Messages
 
-```
-feat: add support for account details API
-fix: correct pagination offset calculation
-docs: update README with new examples
-test: add tests for status page API
-refactor: optimize BaseModel reflection caching
-```
+This project uses [Conventional Commits](https://www.conventionalcommits.org/) and [release-please](https://github.com/googleapis/release-please) for automated releases. Your commit message prefixes directly control version bumps:
+
+| Prefix | Version Bump | Example |
+|--------|-------------|---------|
+| `feat:` | Minor (x.Y.0) | `feat: add support for account details API` |
+| `fix:` | Patch (x.y.Z) | `fix: correct pagination offset calculation` |
+| `feat!:` or `BREAKING CHANGE:` | Major (X.0.0) | `feat!: rename all properties to PascalCase` |
+| `docs:` | No release | `docs: update README with new examples` |
+| `test:` | No release | `test: add tests for status page API` |
+| `chore:` | No release | `chore: update CI workflow` |
+| `refactor:` | No release | `refactor: optimize BaseModel reflection caching` |
 
 ### 3. Update Documentation
 
@@ -518,6 +522,22 @@ refactor: optimize BaseModel reflection caching
 - Mark deprecated APIs with `[Obsolete]`
 - Provide migration path for breaking changes
 - Update CHANGELOG.md for all breaking changes
+
+### 6. Release Process
+
+This project uses [release-please](https://github.com/googleapis/release-please) for fully automated releases. There are no manual version bumps or changelog edits required.
+
+**How it works:**
+
+1. Merge PRs to `main` using Conventional Commit messages (see above)
+2. release-please automatically opens/updates a **Release PR** with:
+   - Version bump in `src/UptimeRobotDotnet.csproj`
+   - Updated `CHANGELOG.md` entries
+3. When a maintainer merges the Release PR:
+   - A Git tag and GitHub Release are created automatically
+   - The `publish` job builds, tests, and pushes the NuGet package
+
+**Important:** Do not manually edit `PackageVersion` in the csproj or the changelog header — release-please manages both.
 
 ## Getting Help
 
