@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2026-02-20
+
+### Changed
+- Dropped explicit `net6.0` target framework (end-of-life); .NET 6 consumers are still supported via `netstandard2.0`
+- Updated `System.Text.Json` from `9.0.6` to `10.0.1` (netstandard2.0)
+- Updated `Microsoft.Extensions.Logging.Abstractions` from `6.0.0` to `10.0.1` (netstandard2.0)
+
+### Updated (test project)
+- Updated `Microsoft.NET.Test.Sdk` from `17.13.0` to `18.0.1`
+- Updated `NUnit.Analyzers` from `4.10.0` to `4.11.2`
+- Updated `NUnit3TestAdapter` from `5.1.0` to `6.0.1`
+
 ## [2.0.0] - 2025-11-05
 
 ### Fixed
