@@ -2,7 +2,7 @@
 
 # UptimeRobot .NET Client
 
-> ⚠️ **v2.0.0 Release Candidate** - This is a pre-release version with breaking changes from v1.x. Please test thoroughly before using in production. [See migration guide](#breaking-changes-from-v1x).
+> ⚠️ **v2.1.0** - This release drops the explicit `net6.0` target framework (end-of-life) and updates core dependencies to .NET 10 packages. .NET 6 consumers are still supported via `netstandard2.0`. See [CHANGELOG.md](CHANGELOG.md) for details.
 
 A modern, fully-featured [UptimeRobot](https://uptimerobot.com) .NET client library with complete API coverage, automatic pagination, and strongly-typed models.
 
@@ -19,34 +19,20 @@ A modern, fully-featured [UptimeRobot](https://uptimerobot.com) .NET client libr
 - ✅ **Cancellation Token Support** - Proper async/await patterns with cancellation
 - ✅ **Custom Exception Types** - Detailed error handling with `UptimeRobotApiException`
 - ✅ **Logging Support** - Optional `ILogger` integration for diagnostics
-- ✅ **Modern .NET** - Supports .NET 9.0, .NET 8.0, .NET 6.0, and .NET Standard 2.0
+- ✅ **Modern .NET** - Supports .NET 9.0, .NET 8.0, and .NET Standard 2.0
 - ✅ **Comprehensive Documentation** - XML docs on all public APIs
 
 ## Installation
-
-### Installing the Release Candidate
-
-To test the v2.0.0 release candidate:
-
-```bash
-dotnet add package UptimeRobotDotnet --version 2.0.0-rc.2
-```
-
-Or via Package Manager Console:
-
-```powershell
-Install-Package UptimeRobotDotnet -Version 2.0.0-rc.2
-```
-
-### Installing Stable Version (v1.x)
-
-For the stable v1.x version:
 
 ```bash
 dotnet add package UptimeRobotDotnet
 ```
 
-> 💡 **Tip**: Once v2.0.0 is released as stable, the above command will install v2.0.0 by default.
+Or via Package Manager Console:
+
+```powershell
+Install-Package UptimeRobotDotnet
+```
 
 ## Quick Start
 
@@ -392,30 +378,6 @@ await client.GetMonitorsAsync();
 | Port | `MonitorType.Port` | TCP port monitoring |
 | Heartbeat | `MonitorType.Heartbeat` | Heartbeat monitoring |
 
-## Testing the Release Candidate
-
-We welcome feedback on this release candidate! Please help us make v2.0.0 stable by testing:
-
-### What to Test
-
-1. **Migration from v1.x**: Follow the [migration guide](#breaking-changes-from-v1x) and report any issues
-2. **New Features**: Try the new Alert Contacts, Maintenance Windows, and Status Pages APIs
-3. **Pagination**: Test with large datasets using `GetAllMonitorsAsync()` and similar methods
-4. **Exception Handling**: Verify the new exception types work as expected
-5. **Multi-Framework**: Test on .NET 9.0, 8.0, 6.0, or .NET Standard 2.0 projects
-
-### How to Provide Feedback
-
-- 🐛 **Bug Reports**: [Open an issue](https://github.com/strvmarv/uptimerobot-dotnet/issues/new) with the "v2.0.0-rc" label
-- 💡 **Feature Requests**: [Start a discussion](https://github.com/strvmarv/uptimerobot-dotnet/discussions)
-- ✅ **Success Stories**: Share your experience in the discussions
-
-### Release Timeline
-
-- **RC Phase**: Testing and feedback collection (2-4 weeks)
-- **RC.2+**: Additional release candidates if critical issues are found
-- **Final Release**: v2.0.0 stable release after successful RC testing
-
 ## Important Notes
 
 ### API Limitations
@@ -460,7 +422,7 @@ dotnet test
 
 ### Development Requirements
 
-- .NET 9.0, 8.0, or 6.0 SDK
+- .NET 9.0 or 8.0 SDK
 - Visual Studio 2022, VS Code, or Rider
 
 ### Running Tests
@@ -495,6 +457,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Version History
 
+- **v2.1.0** - Dependency updates to .NET 10 packages; dropped explicit `net6.0` TFM (still supported via `netstandard2.0`)
 - **v2.0.0** - Complete rewrite with breaking changes, full API coverage, and modern .NET features
 - **v1.0.x** - Initial releases with basic monitor support
 
