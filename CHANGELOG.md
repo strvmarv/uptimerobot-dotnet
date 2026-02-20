@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.1](https://github.com/strvmarv/uptimerobot-dotnet/compare/UptimeRobotDotnet-v2.3.0...UptimeRobotDotnet-v2.3.1) (2026-02-20)
+
+
+### Bug Fixes
+
+* broken CHANGELOG links in NuGet README ([97e8c30](https://github.com/strvmarv/uptimerobot-dotnet/commit/97e8c3066d0491e7de499605a42aa920fdfd0417))
+
 ## [2.3.0](https://github.com/strvmarv/uptimerobot-dotnet/compare/UptimeRobotDotnet-v2.2.0...UptimeRobotDotnet-v2.3.0) (2026-02-20)
 
 
