@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net9.0;net8.0;netstandard2.0</TargetFrameworks>
+		<TargetFrameworks>net10.0;net9.0;net8.0;netstandard2.0</TargetFrameworks>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<LangVersion>9.0</LangVersion>
@@ -11,9 +11,9 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
 		<PackageId>UptimeRobotDotnet</PackageId>
-		<PackageVersion>2.1.0</PackageVersion>
+		<PackageVersion>2.2.0</PackageVersion>
 		<Authors>strvmarv</Authors>
-		<Description>A modern UptimeRobot.com API client for .NET with full API coverage, pagination support, and nullable reference types. Supports .NET 9.0, .NET 8.0, and .NET Standard 2.0.</Description>
+		<Description>A modern UptimeRobot.com API client for .NET with full API coverage, pagination support, and nullable reference types. Supports .NET 10.0, .NET 9.0, .NET 8.0, and .NET Standard 2.0.</Description>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/strvmarv/uptimerobot-dotnet</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -25,13 +25,11 @@
 		<ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
 		<Deterministic>true</Deterministic>
 		<PackageReleaseNotes>
-			v2.1.0 - Dependency updates and .NET 6.0 EOL removal
+			v2.2.0 - Added explicit .NET 10.0 support
 
 			Changes:
-			- Bumped System.Text.Json to 10.0.1 (netstandard2.0)
-			- Bumped Microsoft.Extensions.Logging.Abstractions to 10.0.1 (netstandard2.0)
-			- Dropped explicit net6.0 target framework (end-of-life); .NET 6 consumers are still supported via netstandard2.0
-			- Targets: net9.0, net8.0, netstandard2.0
+			- Added net10.0 as an explicit target framework
+			- Targets: net10.0, net9.0, net8.0, netstandard2.0
 
 			Full changelog: https://github.com/strvmarv/uptimerobot-dotnet/blob/main/CHANGELOG.md
 		</PackageReleaseNotes>
@@ -46,6 +44,10 @@
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net10.0' ">
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.0" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
