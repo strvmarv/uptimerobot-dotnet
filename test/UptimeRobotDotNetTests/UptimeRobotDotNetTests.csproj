@@ -4,6 +4,8 @@
 		<TargetFrameworks>net10.0;net9.0;net8.0</TargetFrameworks>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<!-- NUnit 4.6 adds Action/Func<Task> overloads that are ambiguous with lambdas under C# 12 (net8.0 default) -->
+		<LangVersion>13.0</LangVersion>
 
 		<IsPackable>false</IsPackable>
 		<IsTestProject>true</IsTestProject>
