@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.2](https://github.com/strvmarv/uptimerobot-dotnet/compare/UptimeRobotDotnet-v2.3.1...UptimeRobotDotnet-v2.3.2) (2026-11-18)
+
+
+### Bug Fixes
+
+* **deps:** update Microsoft.Extensions.Logging.Abstractions to 10.0.10 ([#49](https://github.com/strvmarv/uptimerobot-dotnet/issues/49)) ([8abdf63](https://github.com/strvmarv/uptimerobot-dotnet/commit/8abdf6317487271ce1df416ed805cbc4d2b1aaf5))
+
 ## [2.3.1](https://github.com/strvmarv/uptimerobot-dotnet/compare/UptimeRobotDotnet-v2.3.0...UptimeRobotDotnet-v2.3.1) (2026-02-20)
 
 
